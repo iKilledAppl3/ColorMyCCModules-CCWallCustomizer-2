@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBImageTableCell</string>
+			<key>height</key>
+			<string>150</string>
+			<key>icon</key>
+			<string>CCWallCustomizer2-Header</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.ikilledappl3.ccwallcustomizer2-prefsreload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>CMCCCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.ikilledappl3.ccwallcustomizer2</string>
+			<key>id</key>
+			<string>kEnabled</string>
+			<key>key</key>
+			<string>kEnabled</string>
+			<key>label</key>
+			<string>Enable Tweak</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Add an image or remove it with these options.</string>
+			<key>label</key>
+			<string>Control Center Image Options</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>imagePicked</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>id</key>
+			<string>imagePicked</string>
+			<key>label</key>
+			<string>Pick An Image</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>removeCCImage</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>label</key>
+			<string>Remove Image from File System</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Some items require a respring.</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>HBTintedTableCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>© 2018 J.K. Hayslip (iKilledAppl3). All rights reserved. Romans 3:10</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>CCWallCustomizer 2</string>
+</dict>
+</plist>

@@ -1,0 +1,11 @@
+Package: com.ikilledappl3.colormyyccmodules
+Name: ColorMyCCModules
+Depends: mobilesubstrate, ws.hbang.common, org.thebigboss.libcolorpicker
+Version: 1.0.4
+Architecture: iphoneos-arm
+Description: Colorize your Control Center Modules!
+Maintainer: iKilledAppl3 <ipodnewbee234@icloud.com>
+Author: iKilledAppl3 <ipodnewbee234@icloud.com>
+Section: Tweaks
+Replaces: com.ikilledappl3.ccwallcustomizer2
+Conflicts: com.ikilledappl3.ccwallcustomizer2
