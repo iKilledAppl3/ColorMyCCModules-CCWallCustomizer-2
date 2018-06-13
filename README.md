@@ -12,6 +12,8 @@ Works with Haystack!
 * [Theos](https://github.com/theos/theos) - The actual compiler and manager of the tweak.
 * [DarkMessages](https://github.com/Sticktron/DarkMessages/blob/master/Settings/DarkMessagesTheme.h) - Uses this code for the dark look of preferences.
 * [libcolorpicker](https://github.com/atomikpanda/libcolorpicker) - Used to apply a color chosen from the user
+* [libcephei](https://github.com/hbang/libcephei) - Used for preferences management
+
 
 ## License
 
