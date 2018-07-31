@@ -24,6 +24,18 @@
 }
 @end
 
+@interface SBFluidSwitcherViewController : UIViewController {
+
+}
+@end
+
+@interface _MTBackdropView : UIView {
+	
+}
+@property (assign,nonatomic) double blurRadius; 
+@end
+
+
 @interface SBControlCenterController : NSObject {
 
 }

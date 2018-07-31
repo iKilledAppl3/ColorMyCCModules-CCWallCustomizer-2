@@ -1,6 +1,9 @@
 #import "CCWallCustomizer2Classes.h"
+#import <sys/stat.h>
+#import <dlfcn.h>
 
 #define customImgPath @"/var/mobile/Documents/ccwall.png"
+#define cImgPath @"/var/mobile/CCWallCustomizer2/ccwall.png"
 #define plist @"/var/mobile/Library/Preferences/com.ikilledappl3.ccwallcustomizer2.plist"
 
 static BOOL kEnabled;
@@ -11,6 +14,61 @@ UIImageView *ccImageView;
 
 //CCWallCustomizer 2 is a tweak for iOS 11+ that customizes the background of the control center.
 //Created by iKilledAppl3 :P
+
+
+%hook SBFluidSwitcherViewController
+ -(void)viewDidLoad {
+        if (kEnabled && isiPad) {
+                %orig;
+            ccImageView =  [[UIImageView alloc] init];
+		ccImageView.frame = self.view.frame;
+		ccImageView.bounds = self.view.bounds;
+
+		ccImageView.image = [UIImage imageWithContentsOfFile:cImgPath];
+		if ([[NSFileManager defaultManager] fileExistsAtPath:customImgPath]) {
+		system("mv /var/mobile/Documents/ccwall.png /var/mobile/CCWallCustomizer2/");
+	}
+ //fit to the view
+		ccImageView.contentMode = UIViewContentModeScaleAspectFill;
+ //make the image clips to bounds
+//imgView.clipsToBounds = YES;
+ //fix landscape bug 
+		ccImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+
+
+		ccImageView.alpha = 1.0;
+		[ccImageView.layer setOpaque:NO];
+//add the image view as a sub view of the background view 
+		[self.view addSubview:ccImageView];
+		[self.view sendSubviewToBack:ccImageView];
+
+		[UIView beginAnimations:nil context:NULL];
+				[UIView setAnimationDuration:0.8];
+				[ccImageView setAlpha:1];
+				[UIView commitAnimations];
+
+		
+		
+
+}
+       else {
+       %orig;
+    }
+}
+
+ -(void)willMoveToParentViewController:(id)arg1 {
+        if (kEnabled && isiPad) {
+                %orig;
+            	[UIView beginAnimations:nil context:NULL];
+				[UIView setAnimationDuration:0.8];
+				[ccImageView setAlpha:0];
+				[UIView commitAnimations];
+}
+       else {
+       %orig;
+    }
+}
+%end
 
 
 %hook CCUIModularControlCenterOverlayViewController 
@@ -29,7 +87,10 @@ UIImageView *ccImageView;
 		ccImageView.frame = self.view.frame;
 		ccImageView.bounds = self.view.bounds;
 
-		ccImageView.image = [UIImage imageWithContentsOfFile:customImgPath];
+		ccImageView.image = [UIImage imageWithContentsOfFile:cImgPath];
+		if ([[NSFileManager defaultManager] fileExistsAtPath:customImgPath]) {
+		system("mv /var/mobile/Documents/ccwall.png /var/mobile/CCWallCustomizer2/");
+	}
 
  //fit to the view
 		ccImageView.contentMode = UIViewContentModeScaleAspectFill;

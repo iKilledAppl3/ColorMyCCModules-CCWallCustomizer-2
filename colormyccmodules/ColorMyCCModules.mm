@@ -1,7 +1,7 @@
 #import "ColorMyCCModules_prefsheader.h"
  UIActivityViewController *activityViewController;
+ 
 @implementation ColorMyCCModulesListController
-
 
 - (id)init {
 	if (self = [super init]) {
@@ -36,16 +36,14 @@
 -(void)viewWillAppear:(BOOL)animated {
 	[self reload];
 	[super viewWillAppear:animated];
-      self.navigationController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.11 green:0.11 blue:0.114 alpha:1.0];
-
+	self.navigationController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.11 green:0.11 blue:0.114 alpha:1.0];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-	
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationController.navigationBar.barTintColor = nil;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [super viewWillDisappear:animated];
+   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 //share button action 

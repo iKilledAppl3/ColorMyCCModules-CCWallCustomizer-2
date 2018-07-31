@@ -10,6 +10,7 @@
 HBPreferences *preferences;
 //see if tweak is enabled!
 static BOOL kIsEnabled;
+NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.ikilledappl3.colormyccmodules.plist"];	
 static NSString *kChosenColor;
 
 @class NSString, UIColor;
@@ -20,12 +21,6 @@ static NSString *kChosenColor;
 @end
 
 @interface _UIBackdropView : UIView
-@end
-
-@interface _MTBackdropView : UIView {
-	
-}
-@property (assign,nonatomic) double blurRadius; 
 @end
 
 @interface NCMaterialView : UIView

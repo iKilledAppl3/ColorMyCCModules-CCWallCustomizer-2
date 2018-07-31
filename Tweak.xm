@@ -78,9 +78,8 @@ dlopen ("/usr/lib/TweakInject/Haystack.dylib", RTLD_NOW);
              preferences = [[HBPreferences alloc] initWithIdentifier:@"com.ikilledappl3.colormyccmodules"];
 
 			 [preferences registerBool:&kIsEnabled default:NO forKey:@"kIsEnabled"];
-	
-	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.ikilledappl3.colormyccmodules.plist"];
-	kChosenColor = ([prefs objectForKey:@"kChosenColor"] ? [prefs objectForKey:@"kChosenColor"] : @"#000000");
+			 [preferences registerObject:&kChosenColor default:nil forKey:@"kChosenColor"];
+			
 	
 	
 }

@@ -4,7 +4,8 @@
 #import <sys/stat.h>
 #import <dlfcn.h>
 #define ccImagePath @"/Library/Application Support/ColorMyCCModules/ColorMyCCModules2.PNG"
-static NSString *imgPath = @"/var/mobile/CCWallCustomizer2/";
+static NSString *imgPath = @"/var/mobile/Documents/";
+static NSString *documentsPath = @"/var/mobile/";
 
 #define ccWallImgPath @"/Library/PreferenceBundles/ColorMyCCModules.bundle/CCWallCustomizer2.png"
 
@@ -194,12 +195,25 @@ self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarBut
     }
 	
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-   UIImage *picture = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NSString *path = [imgPath stringByAppendingPathComponent:@"ccwall.png"];
+      NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *dirDoc = [paths objectAtIndex:0];
+    NSString *path = [dirDoc stringByAppendingPathComponent:@"ccwall.png"];
      NSData *dataToWrite = UIImagePNGRepresentation(picture);
      [dataToWrite writeToFile:path atomically:YES];
+	 chmod ("/var/mobile/Documents", 0755);
+
+  if (![[NSFileManager defaultManager] displayNameAtPath:documentsPath]) {
+	  mkdir ("/var/mobile/Documents", 0755);
+	  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *dirDoc = [paths objectAtIndex:0];
+    NSString *path = [dirDoc stringByAppendingPathComponent:@"ccwall.png"];
+     NSData *dataToWrite = UIImagePNGRepresentation(picture);
+     [dataToWrite writeToFile:path atomically:YES];
+	  
+}
+	 
     
-	 if (![[NSFileManager defaultManager] fileExistsAtPath:imgPath]) {
+else if (![[NSFileManager defaultManager] fileExistsAtPath:imgPath]) {
 		
 		UIAlertController *pathErrorAlert = [UIAlertController
 		alertControllerWithTitle:@"CCWallCustomizer 2"
@@ -218,8 +232,9 @@ self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarBut
 		
 		//Force the file to write to the path we specified even if it throws an error!
 		//Using this method
-	mkdir ("/var/mobile/CCWallCustomizer2", 0755);
+	                   
 	[[NSFileManager defaultManager] createFileAtPath:imgPath contents:nil attributes:nil];
+		//[[NSFileManager defaultManager] createFileAtPath:]
 		
 		
 		
